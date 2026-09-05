@@ -37,6 +37,5 @@ def compare(a, b):
     ka, kb = _pre_key(pa["prerelease"]), _pre_key(pb["prerelease"])
     if ka != kb:
         return -1 if ka < kb else 1
-    if pa["build"] != pb["build"]:
-        raise NotImplementedError("build-metadata precedence is an unresolved engineering decision")
+    # Option A (SemVer 2.0.0 s10): build metadata is IGNORED for precedence.
     return 0
