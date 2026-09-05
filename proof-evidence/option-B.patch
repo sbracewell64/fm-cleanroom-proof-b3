@@ -1,0 +1,35 @@
+diff --git a/fmproof/semver.py b/fmproof/semver.py
+index 3767534..8f72127 100644
+--- a/fmproof/semver.py
++++ b/fmproof/semver.py
+@@ -37,6 +37,8 @@ def compare(a, b):
+     ka, kb = _pre_key(pa["prerelease"]), _pre_key(pb["prerelease"])
+     if ka != kb:
+         return -1 if ka < kb else 1
+-    if pa["build"] != pb["build"]:
+-        raise NotImplementedError("build-metadata precedence is an unresolved engineering decision")
++    # Option B: build metadata compared lexically as a tiebreaker (non-spec).
++    ba, bb = pa["build"] or "", pb["build"] or ""
++    if ba != bb:
++        return -1 if ba < bb else 1
+     return 0
+diff --git a/tests/test_build_metadata.py b/tests/test_build_metadata.py
+index 54e3b91..5c3a4d6 100644
+--- a/tests/test_build_metadata.py
++++ b/tests/test_build_metadata.py
+@@ -1,10 +1,8 @@
+-"""The ONLY test of build-metadata precedence. The ruled option's byte-pinned
+-patch fully owns this file. Decision pending a Browser Sol fm-sol-control/v2 ruling."""
+-import pytest
++"""The ONLY test of build-metadata precedence. Resolved: Option B — lexical tiebreak."""
+ from fmproof import compare
+ 
+ 
+-@pytest.mark.xfail(reason="build-metadata precedence decision pending fm-sol-control/v2 ruling",
+-                   raises=NotImplementedError, strict=True)
+-def test_build_metadata_precedence_decided():
+-    compare("1.0.0+a", "1.0.0+b")
++def test_build_metadata_lexical_tiebreak():
++    assert compare("1.0.0+a", "1.0.0+b") == -1
++    assert compare("1.0.0+b", "1.0.0+a") == 1
++    assert compare("1.0.0+a", "1.0.0+a") == 0

@@ -1,0 +1,11 @@
+Semantic Versioning 2.0.0 — Section 10 (Build metadata)
+
+10. Build metadata MAY be denoted by appending a plus sign and a series of dot
+separated identifiers immediately following the patch or pre-release version.
+Identifiers MUST comprise only ASCII alphanumerics and hyphens [0-9A-Za-z-].
+Identifiers MUST NOT be empty. Build metadata MUST be ignored when determining
+version precedence. Thus two versions that differ only in the build metadata,
+have the same precedence.
+
+(Pinned normative anchor for the semver-build-metadata-precedence decision;
+content-addressed as immutable evidence for Proof B attempt-2.)

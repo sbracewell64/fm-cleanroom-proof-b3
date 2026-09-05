@@ -1,0 +1,59 @@
+{
+  "amendable": false,
+  "amendments": 0,
+  "attempt": 3,
+  "authorized_by": "control#3 #27 ruling 5554077951 (ADOPT_OPTION A: require fresh clean attempt-3) under captain staged authorization 5552194003",
+  "bounds": {
+    "expires_at": "2026-09-08T23:59:00Z"
+  },
+  "closes_gap": "attempt-2 pre-registration completeness gap: the byte-pinned option patch now fully owns EVERY test whose expected result the decision changes (tests/test_build_metadata.py is the sole build-metadata behavior test); verified the FULL suite passes after applying each option at H0. __pycache__/*.pyc excluded via .gitignore and watched-red.",
+  "control_transport": {
+    "family": "fm-sol-control/v2 (active gen-4, 4-tuple evidence_digest)",
+    "issue": "NEW dedicated issue",
+    "labels": [
+      "control/escalation",
+      "to/browser-sol"
+    ],
+    "ruler": "browser-sol sole interactive path (post single-writer recovery); rules the typed v2 request directly, no captain relay",
+    "venue_repo": "sbracewell64/firstmate-cleanroom-control"
+  },
+  "decision": {
+    "consumption_rule": "B-S11 applies the ruled option's byte-pinned patch at the correct non-stale head; applied-bytes identity = produced diff == pinned patch; changed paths subset of {fmproof/semver.py, tests/test_build_metadata.py}; FULL exact-head suite must pass (verified pre-pin for both options).",
+    "options": {
+      "A": {
+        "patch": "inputs/option-A.patch",
+        "patch_sha256": "a21ab1c54883b271e529038cdc4eb3ee25ca3ea03804ac1692389b8ce348d6aa",
+        "summary": "IGNORED (SemVer 2.0.0 s10)"
+      },
+      "B": {
+        "patch": "inputs/option-B.patch",
+        "patch_sha256": "a516c888932012497c2f7c0dd92a83411cf1270528aac1d5997e836a1fbda5fc",
+        "summary": "lexical tiebreaker (non-spec)"
+      }
+    },
+    "question": "In semver precedence comparison, how is build metadata treated?"
+  },
+  "fold_rule": {
+    "aim": "non-FAIL terminal (CNO_AT_B-S9) with every live falsifier observed-good and NO observed-bad (esp. B-S13 exact-head requalification must pass at the consumed head)",
+    "expected_terminal_outcome": "CNO_AT_B-S9 (independence) \u2014 the sole grade cap; all other stages must be observed-good; PROVED not reachable without a second principal",
+    "independence_predicate": "could-not-observe (one forge principal fronts maker+ruler; NEVER converted to distinct-principal proof)",
+    "outcome_is": "FOLDED from observations.jsonl, never asserted",
+    "precedence": "FAIL > CNO > PASS"
+  },
+  "notes": "Full contract per #27 conditions: complete pagination/universe, replay/idempotence, inaccessible-subject CNO, live stale-ruling rejection after head move, byte-identity consumption, exact-head NM requalification (FULL suite), normal delivery, unrelated-work continuation. attempt-2 + both #26 forked rulings preserved unchanged.",
+  "pinned_at": "2026-09-05T19:10:06Z",
+  "proof_id": "proof-b",
+  "schema": "fm-proof-pin/v1",
+  "subject": {
+    "base": "main",
+    "base_sha_at_pin": "0b1ac39b3c4e68b21f9232111ed509a038458694",
+    "candidate_branch": "proof-b3-candidate",
+    "candidate_pr": 1,
+    "candidate_url": "https://github.com/sbracewell64/fm-cleanroom-proof-b3/pull/1",
+    "head_H0": "f6e3a67b6ca6533a1df87f520466041f3e8a2eb5",
+    "head_H0_tree": "c81e5fda7f9afecf3d633ec80af24d5309ae1cc5",
+    "mutability": "OPEN PR; head movable; mutation pushes H1 != H0 to exercise live stale-ruling rejection, then restore H0 for consumption",
+    "repo": "sbracewell64/fm-cleanroom-proof-b3"
+  },
+  "supersedes_evidence_of": "attempt-2 (terminal FAIL_AT_B-S13, preserved as adverse evidence; NOT reinterpreted)"
+}
